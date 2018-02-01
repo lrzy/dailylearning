@@ -1,6 +1,6 @@
 # -*- coding=utf-8 -*-
 """
-    使用迭代的方式查询最大值和最小值
+        测试命令行工具类
 """
 import sys
 reload(sys)
