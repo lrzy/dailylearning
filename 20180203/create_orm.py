@@ -16,9 +16,9 @@ __version__="0.1"
 classtmp = Template(u"""
 class $classname(NXBase):
     u\"\"\"
-        $tabledoc
-     \"\"\"
-     __tablename__='$tablename'
+       $tabledoc
+    \"\"\"
+    __tablename__='$tablename'
 $columns
 """)
 
@@ -79,7 +79,7 @@ def create_orm_class(path,sheetname,filename):
             else:
                 col['otherattr']=""
     
-            reattr = {'varchar':'String','int':'BigInteger','decimal':'DECIMAL'}
+            reattr = {'date':'Date','datetime':'DateTime','varchar':'String','int':'BigInteger','decimal':'DECIMAL'}
             for k,v in reattr.items():
                 if k in col['colattr'].lower():
                     col['colattr']=col['colattr'].lower().replace(k,v)
@@ -96,8 +96,8 @@ def create_orm_class(path,sheetname,filename):
     with open(fp,'w') as f:
         f.writelines([
             "#  -*- coding:utf-8 -*-\n",
-            "from sqlalchemy import BigInteger,DECIMAL,Column\n\n",
-            "from task.tools.util import NxBase\n",
+            "from sqlalchemy import DateTime,String,Date,BigInteger,DECIMAL,Column\n\n",
+            #"from task.tools.util import NXBase\n",
         ])
         for cstr in  classstrs:
             f.write(cstr)

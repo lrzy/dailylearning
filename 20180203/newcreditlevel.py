@@ -1,25 +1,26 @@
 #  -*- coding:utf-8 -*-
-from sqlalchemy import BigInteger,DECIMAL,Column
+from sqlalchemy import Date,DateTime,String,BigInteger,DECIMAL,Column
+from sqlalchemy.ext.declarative import declarative_base
+NXBase = declarative_base()
 
-from task.tools.util import NxBase
 
 class CreditPerInfo(NXBase):
     u"""
-        对私授信信息表
-     """
-     __tablename__='cr_creditperinfo'
+       对私授信信息表
+    """
+    __tablename__='cr_creditperinfo'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     base_id = Column(BigInteger,doc=u'CreditPerBase.ID')
     userno = Column(String(64),doc=u'测算客户经理')
     cre_amount = Column(DECIMAL(18,6),doc=u'资产负债测算额度(万元)')
-    add_time = Column(datetime,doc=u'增加时间')
+    add_time = Column(DateTime,doc=u'增加时间')
 
 
 class CreditPubInfo(NXBase):
     u"""
-        对公授信信息表
-     """
-     __tablename__='cr_creditpubinfo'
+       对公授信信息表
+    """
+    __tablename__='cr_creditpubinfo'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     base_id = Column(BigInteger,doc=u'CreditPubBase.ID')
     userno = Column(String(64),doc=u'测算客户经理')
@@ -27,14 +28,14 @@ class CreditPubInfo(NXBase):
     adj_exp = Column(String(512),doc=u'调整说明')
     zcfz_amount = Column(DECIMAL(18,6),doc=u'资产负债测算额度(万元)')
     ldzj_amount = Column(DECIMAL(18,6),doc=u'流动资金测算额度(万元)')
-    add_time = Column(datetime,doc=u'增加时间')
+    add_time = Column(DateTime,doc=u'增加时间')
 
 
 class GradePerBase(NXBase):
     u"""
-        对私评级基础信息表
-     """
-     __tablename__='cr_gradeperbase'
+       对私评级基础信息表
+    """
+    __tablename__='cr_gradeperbase'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     custno = Column(String(64),doc=u'客户内码')
     customerno = Column(String(64),doc=u'客户号')
@@ -68,15 +69,15 @@ class GradePerBase(NXBase):
     sale_ratio = Column(DECIMAL(18,6),doc=u'销售利润率')
     asset_ratio = Column(DECIMAL(18,6),doc=u'资产负债率')
     net_profit = Column(DECIMAL(18,6),doc=u'年净利润率')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
 
 class CreditPerBase(NXBase):
     u"""
-        对私授信基础信息表
-     """
-     __tablename__='cr_creditperbase'
+       对私授信基础信息表
+    """
+    __tablename__='cr_creditperbase'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     custno = Column(String(64),doc=u'客户内码')
     customerno = Column(String(64),doc=u'客户号')
@@ -95,15 +96,15 @@ class CreditPerBase(NXBase):
     exp_lose = Column(DECIMAL(18,6),doc=u'预计或有负债损失额(元)')
     income_origin = Column(String(64),doc=u'收入来源')
     fam_income = Column(DECIMAL(18,6),doc=u'家庭年收入(元)')
-    from_date = Column(date,doc=u'生效日期')
-    end_date = Column(date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
 
 class GradePubAllScore(NXBase):
     u"""
-        对公评级总分表
-     """
-     __tablename__='cr_gradepuballscore'
+       对公评级总分表
+    """
+    __tablename__='cr_gradepuballscore'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     customerno = Column(String(64),doc=u'客户号')
     custno = Column(String(64),doc=u'客户内码')
@@ -146,15 +147,15 @@ class GradePubAllScore(NXBase):
     adj_level = Column(String(64),doc=u'调整评级（不良下调）')
     adj_res = Column(String(64),doc=u'调整说明')
     now_level = Column(String(64),doc=u'当前等级（查看）')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
 
 class GradePerDealerScore(NXBase):
     u"""
-        对私工商乐分值表
-     """
-     __tablename__='cr_gradeperdealerscore'
+       对私工商乐分值表
+    """
+    __tablename__='cr_gradeperdealerscore'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     allscore_id = Column(BigInteger,doc=u'')
     net_asset = Column(DECIMAL(18,6),doc=u'净资产')
@@ -172,15 +173,15 @@ class GradePerDealerScore(NXBase):
     net_profit = Column(DECIMAL(18,6),doc=u'年净利润率')
     net_profit_score = Column(DECIMAL(18,6),doc=u'年净利润率分值')
     count_score = Column(DECIMAL(18,6),doc=u'专家模型分值汇总')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
 
 class CreditPubBase(NXBase):
     u"""
-        对公授信基础信息表
-     """
-     __tablename__='cr_creditpubbase'
+       对公授信基础信息表
+    """
+    __tablename__='cr_creditpubbase'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     custno = Column(String(64),doc=u'客户内码')
     customerno = Column(String(64),doc=u'客户号')
@@ -195,7 +196,7 @@ class CreditPubBase(NXBase):
     rejistry_captial = Column(DECIMAL(18,6),doc=u'注册资本(万元)')
     employee_num = Column(DECIMAL(18,6),doc=u'职工人数')
     cust_grade = Column(String(64),doc=u'信用等级')
-    data_time = Column(date,doc=u'数据时段')
+    data_time = Column(Date,doc=u'数据时段')
     total_asset = Column(DECIMAL(18,6),doc=u'资产总额(元)')
     total_debt = Column(String(64),doc=u'负债总额(元)')
     other_bank_loan = Column(DECIMAL(18,6),doc=u'他行现有贷款(元)')
@@ -220,15 +221,15 @@ class CreditPubBase(NXBase):
     ex_sc1 = Column(DECIMAL(18,6),doc=u'上年-预计销售收入(元)')
     ex_sc2 = Column(DECIMAL(18,6),doc=u'本年-预计销售收入(元)')
     ex_scr = Column(DECIMAL(18,6),doc=u'预计销售年增长率(元)')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
 
 class GradePerAllScore(NXBase):
     u"""
-        对私评级总分表
-     """
-     __tablename__='cr_gradeperallscore'
+       对私评级总分表
+    """
+    __tablename__='cr_gradeperallscore'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     custno = Column(String(64),doc=u'客户内码')
     customerno = Column(String(64),doc=u'客户号')
@@ -245,15 +246,15 @@ class GradePerAllScore(NXBase):
     adj_level = Column(String(64),doc=u'调整评级（不良下调）')
     now_level = Column(String(64),doc=u'当前等级（查看）')
     adj_res = Column(String(512),doc=u'调整说明')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
 
 class GradePerCommonScore(NXBase):
     u"""
-        对私通用模型分值表
-     """
-     __tablename__='cr_gradepercommonscore'
+       对私通用模型分值表
+    """
+    __tablename__='cr_gradepercommonscore'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     allscore_id = Column(BigInteger,doc=u'')
     age = Column(DECIMAL(18,2),doc=u'年龄')
@@ -272,16 +273,16 @@ class GradePerCommonScore(NXBase):
     starlevel_score = Column(DECIMAL(18,6),doc=u'客户星级分值')
     starlevel_r = Column(String(64),doc=u'原客户星级')
     count_score = Column(DECIMAL(18,6),doc=u'通用模型分值汇总')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
-    source_date = Column(Date,doc=u'数据日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
+    source_Date = Column(Date,doc=u'数据日期')
 
 
 class GradePerFarmerScore(NXBase):
     u"""
-        对私农户乐分值表
-     """
-     __tablename__='cr_gradeperfarmerscore'
+       对私农户乐分值表
+    """
+    __tablename__='cr_gradeperfarmerscore'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     allscore_id = Column(BigInteger,doc=u'')
     exp_income = Column(DECIMAL(18,6),doc=u'支出收入比')
@@ -293,15 +294,15 @@ class GradePerFarmerScore(NXBase):
     dis_income = Column(DECIMAL(18,6),doc=u'可支配收入')
     dis_income_score = Column(DECIMAL(18,6),doc=u'可支配收入分值')
     count_score = Column(DECIMAL(18,6),doc=u'专家模型分值汇总')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
 
 class GradePerEmpScore(NXBase):
     u"""
-        对私金领乐工薪乐分值表
-     """
-     __tablename__='cr_gradeperempscore'
+       对私金领乐工薪乐分值表
+    """
+    __tablename__='cr_gradeperempscore'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     allscore_id = Column(BigInteger,doc=u'')
     job = Column(String(64),doc=u'职务')
@@ -321,15 +322,15 @@ class GradePerEmpScore(NXBase):
     house_value = Column(DECIMAL(18,4),doc=u'房产价值')
     house_value_score = Column(DECIMAL(18,6),doc=u'房产价值分值')
     count_score = Column(DECIMAL(18,6),doc=u'专家模型分值汇总')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
 
 class GradePubBase(NXBase):
     u"""
-        对公评级基础信息表
-     """
-     __tablename__='cr_gradepubbase'
+       对公评级基础信息表
+    """
+    __tablename__='cr_gradepubbase'
     id = Column(BigInteger,doc=u'ID',primary_key=True)
     customerno = Column(String(64),doc=u'客户号')
     custno = Column(String(64),doc=u'客户内码')
@@ -356,6 +357,6 @@ class GradePubBase(NXBase):
     cash_in = Column(DECIMAL(18,6),doc=u'现金流入量')
     gross_ratio = Column(DECIMAL(18,6),doc=u'')
     asset_ratio = Column(DECIMAL(18,6),doc=u'资产负债率')
-    from_date = Column(Date,doc=u'生效日期')
-    end_date = Column(Date,doc=u'失效日期')
+    from_Date = Column(Date,doc=u'生效日期')
+    end_Date = Column(Date,doc=u'失效日期')
 
