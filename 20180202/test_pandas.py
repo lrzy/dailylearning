@@ -43,9 +43,9 @@ def test_pandas(path):
     a.to_csv('a.csv')
     b.to_csv('b.csv')
 
-    olddata=df[df[u"营销人员机构"]==875020]
+    olddata=df[df[u"营销人员机构"]==875084]
     olddata.to_excel('olddata.xls')
-    newdata=df2[df2[u"营销机构"]==875020]
+    newdata=df2[df2[u"营销机构"]==875084]
     newdata.to_excel('newdata.xls')
     newdata = newdata[[u'签约号',u'营销机构']].drop_duplicates()
     c = pd.merge(olddata,newdata,how='outer',left_on=u'车牌号',right_on=u'签约号')
