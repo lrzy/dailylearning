@@ -23,7 +23,7 @@ $columns
 """)
 
 #列模板
-columtmp = Template(u"""    $colname = Column($colattr,doc=u'$coldoc'$otherattr)
+columtmp = Template(u"""    $colname = Column($colattr$otherattr,doc=u'$coldoc')
 """)
 #表前缀
 table_per ='cr_'
